@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import About from './pages/Aboutme/About';
 import Contact from "./pages/Contact/Contact";
 import Portfolio from "./pages/Portfolio/Portfolio";
@@ -11,8 +11,8 @@ import NotFound404 from "./pages/404NotFound/404.jsx";
 function App() {
   return (
     <>
-    <Router>
-      <div className='flex h-[100vh] overflow-hidden w-[100%]'>
+    <BrowserRouter>
+      {/* <div className='flex h-[100vh] overflow-hidden w-[100%]'> */}
         <Routes>
           <Route path="/" element={<Navigate to="/about" replace />} />
           <Route path="/about" element={<About />} />
@@ -24,8 +24,8 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound404 />} />
         </Routes>
-      </div>
-    </Router>
+      {/* </div> */}
+    </BrowserRouter>
     </>
   )
 }
