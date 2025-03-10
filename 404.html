@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page Not Found</title>
-    <!-- Meta tag to refresh and redirect -->
-    <meta http-equiv="refresh" content="0; url=/myresume/" />
     <script type="text/javascript">
-      // JavaScript fallback if meta tag doesn't work
-      window.location.replace("/myresume/");
+      // Check if the current URL matches a route handled by React Router
+      if (!window.location.pathname.startsWith("/myresume/")) {
+        // Redirect to the homepage (index.html) only if it's not a valid React route
+        window.location.replace("/myresume/");
+      }
     </script>
   </head>
   <body>
