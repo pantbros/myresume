@@ -12,7 +12,7 @@ function App() {
   return (
     <>
     <BrowserRouter>
-      {/* <div className='flex h-[100vh] overflow-hidden w-[100%]'> */}
+      <div className='flex h-[100vh] overflow-hidden w-[100%]'>
         <Routes>
           <Route path="/" element={<Navigate to="/about" replace />} />
           <Route path="/about" element={<About />} />
@@ -24,7 +24,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound404 />} />
         </Routes>
-      {/* </div> */}
+      </div>
     </BrowserRouter>
     </>
   )
