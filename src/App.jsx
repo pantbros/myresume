@@ -11,8 +11,8 @@ import NotFound404 from "./pages/404NotFound/404.jsx";
 function App() {
   return (
     <>
-    <Router basename='/myresume'>
-      <div className='flex h-[100vh] overflow-hidden w-[100%]'>
+    <BrowserRouter basename="/myresume"> {/* Add basename here */}
+      <div className="flex h-[100vh] overflow-hidden w-[100%]">
         <Routes>
           <Route path="/" element={<Navigate to="/about" replace />} />
           <Route path="/about" element={<About />} />
@@ -25,7 +25,7 @@ function App() {
           <Route path="*" element={<NotFound404 />} />
         </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
     </>
   )
 }
