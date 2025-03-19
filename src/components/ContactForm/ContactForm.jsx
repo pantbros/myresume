@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function ContactForm({ inputFields, validate }) {
     const [formData, setFormData] = useState({});
     const [errors, setErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false); // Loading state
+    const [isSubmitting, setIsSubmitting] = useState(false); // ✅ Loading state
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -27,29 +27,27 @@ function ContactForm({ inputFields, validate }) {
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length === 0) {
-            setIsSubmitting(true); // Show overlay and disable button
+            setIsSubmitting(true); // ✅ Disable button & show overlay
 
-            const handleSubmit = async (event) => {
-                event.preventDefault();
-            
-                try {
-                    const response = await fetch("/api/send-email", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(formData)
-                    });
-            
-                    if (response.ok) {
-                        alert("Email sent successfully!");
-                    } else {
-                        alert("Failed to send email.");
-                    }
-                } catch (error) {
-                    console.error("Error:", error);
-                    alert("Something went wrong!");
+            try {
+                const response = await fetch("https://your-vercel-app.vercel.app/api/send-email", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    alert("Email sent successfully!");
+                    setFormData({}); // ✅ Form reset
+                } else {
+                    alert("Failed to send email.");
                 }
-            };
-            
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Something went wrong!");
+            } finally {
+                setIsSubmitting(false); // ✅ Re-enable button
+            }
         }
     };
 
@@ -75,7 +73,7 @@ function ContactForm({ inputFields, validate }) {
                                     value={formData[name] || ""}
                                     onChange={handleChange}
                                     className="border rounded p-2 w-full ps-10 bg-transparent focus:outline-none"
-                                    disabled={isSubmitting} // Disable inputs when submitting
+                                    disabled={isSubmitting} // ✅ Disable when submitting
                                 />
                                 {errors[name] && <span className="text-red-500 text-sm ms-2 absolute left-0 bottom-[-1.5rem] capitalize">{errors[name]}</span>}
                             </div>
@@ -93,7 +91,7 @@ function ContactForm({ inputFields, validate }) {
                                     value={formData[name] || ""}
                                     onChange={handleChange}
                                     className="border rounded p-2 w-full ps-10 bg-transparent focus:outline-none"
-                                    disabled={isSubmitting} // Disable textarea when submitting
+                                    disabled={isSubmitting} // ✅ Disable when submitting
                                 />
                                 {errors[name] && <span className="text-red-500 text-sm ms-2 absolute bottom-[-1.5rem] capitalize">{errors[name]}</span>}
                             </div>
@@ -105,7 +103,7 @@ function ContactForm({ inputFields, validate }) {
                     className={`bg-primary-theme-clr text-[#ffffff] w-max border-2 border-primary-theme-clr py-3 px-6 rounded-full capitalize flex items-center mt-10 transition duration-200 ${
                         isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-white hover:text-black"
                     }`}
-                    disabled={isSubmitting}  // ✅ Correctly disabling button during submission
+                    disabled={isSubmitting}  // ✅ Button disabled during submission
                 >
                     {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
