@@ -30,7 +30,7 @@ function ContactForm({ inputFields, validate }) {
             setIsSubmitting(true); // ✅ Disable button & show overlay
 
             try {
-                const response = await fetch("https://your-vercel-app.vercel.app/api/send-email", {
+                const response = await fetch("/api/send-email", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(formData)
