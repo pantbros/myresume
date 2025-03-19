@@ -10,7 +10,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ message: "Invalid request body" });
     }
 
-    const { name, email, message } = req.body;
+    const { name, email, message, phone, location} = req.body;
 
     // Environment variable check (Debugging purpose)
     if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
