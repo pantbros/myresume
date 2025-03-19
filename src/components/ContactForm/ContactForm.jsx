@@ -1,17 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function ContactForm({ inputFields, validate }) {
-    const [formData, setFormData] = useState({});
+    const initialState = inputFields.reduce((acc, field) => {
+        acc[field.name] = "";
+        return acc;
+    }, {});
+
+    const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
-    const [isSubmitting, setIsSubmitting] = useState(false); // ✅ Loading state
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    useEffect(() => {
+        if (!isSubmitting) {
+            setFormData(initialState);
+        }
+    }, [isSubmitting]);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
 
         if (validate && typeof validate === "function") {
             const error = validate(name, value);
-            setErrors({ ...errors, [name]: error });
+            setErrors(prevErrors => ({
+                ...prevErrors,
+                [name]: error
+            }));
         }
     };
 
@@ -27,7 +44,7 @@ function ContactForm({ inputFields, validate }) {
         setErrors(newErrors);
 
         if (Object.keys(newErrors).length === 0) {
-            setIsSubmitting(true); // ✅ Disable button & show overlay
+            setIsSubmitting(true);
 
             try {
                 const response = await fetch("/api/send-email", {
@@ -35,16 +52,11 @@ function ContactForm({ inputFields, validate }) {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({
-                        name: "John Doe",
-                        email: "john@example.com",
-                        message: "Hello, this is a test!"
-                    })
+                    body: JSON.stringify(formData) // ✅ Corrected here
                 });
 
                 if (response.ok) {
                     alert("Email sent successfully!");
-                    setFormData({}); // ✅ Form reset
                 } else {
                     alert("Failed to send email.");
                 }
@@ -52,14 +64,13 @@ function ContactForm({ inputFields, validate }) {
                 console.error("Error:", error);
                 alert("Something went wrong!");
             } finally {
-                setIsSubmitting(false); // ✅ Re-enable button
+                setIsSubmitting(false);
             }
         }
     };
 
     return (
         <div className="relative">
-            {/* Overlay */}
             {isSubmitting && (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
                     <p className="text-[#ffffff] text-lg">Please wait...</p>
@@ -76,10 +87,10 @@ function ContactForm({ inputFields, validate }) {
                                     type={type || "text"}
                                     name={name}
                                     placeholder={placeholder}
-                                    value={formData[name] || ""}
+                                    value={formData[name]}
                                     onChange={handleChange}
                                     className="border rounded p-2 w-full ps-10 bg-transparent focus:outline-none"
-                                    disabled={isSubmitting} // ✅ Disable when submitting
+                                    disabled={isSubmitting}
                                 />
                                 {errors[name] && <span className="text-red-500 text-sm ms-2 absolute left-0 bottom-[-1.5rem] capitalize">{errors[name]}</span>}
                             </div>
@@ -94,10 +105,10 @@ function ContactForm({ inputFields, validate }) {
                                 <textarea
                                     name={name}
                                     placeholder={placeholder}
-                                    value={formData[name] || ""}
+                                    value={formData[name]}
                                     onChange={handleChange}
                                     className="border rounded p-2 w-full ps-10 bg-transparent focus:outline-none"
-                                    disabled={isSubmitting} // ✅ Disable when submitting
+                                    disabled={isSubmitting}
                                 />
                                 {errors[name] && <span className="text-red-500 text-sm ms-2 absolute bottom-[-1.5rem] capitalize">{errors[name]}</span>}
                             </div>
@@ -109,7 +120,7 @@ function ContactForm({ inputFields, validate }) {
                     className={`bg-primary-theme-clr text-[#ffffff] w-max border-2 border-primary-theme-clr py-3 px-6 rounded-full capitalize flex items-center mt-10 transition duration-200 ${
                         isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:bg-white hover:text-black"
                     }`}
-                    disabled={isSubmitting}  // ✅ Button disabled during submission
+                    disabled={isSubmitting}
                 >
                     {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
