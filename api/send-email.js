@@ -32,7 +32,7 @@ export default async function handler(req, res) {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
             subject: "New Contact Form Message",
-            text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+            text: `Name: ${name}\nEmail: ${email}\nPhone:${phone}\nLocation:${location}\nMessage: ${message}`
         });
 
         res.status(200).json({ message: "Email sent successfully!" });
