@@ -32,8 +32,14 @@ function ContactForm({ inputFields, validate }) {
             try {
                 const response = await fetch("/api/send-email", {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(formData)
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: "John Doe",
+                        email: "john@example.com",
+                        message: "Hello, this is a test!"
+                    })
                 });
 
                 if (response.ok) {
