@@ -40,7 +40,7 @@ function LeftSidePane({ name, designation }) {
     <>
       {/* Toggle button visible only on mobile */}
       <button
-        className="w-[32px] h-[32px] border border-black rounded-full flex md:hidden items-center justify-center absolute top-[1%] right-[3%] z-50"
+        className="w-[32px] h-[32px] border bg-white border-black rounded-full flex md:hidden items-center justify-center absolute top-[1%] right-[3%] z-50"
         onClick={toggleMenu}
       >
         {isMenuOpen ? <RxCross2 /> : <RxHamburgerMenu />}
@@ -70,7 +70,7 @@ function LeftSidePane({ name, designation }) {
             <p>{designation = 'Senior Software Engineer'}</p>
             <ul className="list-none flex justify-center items-center gap-2">
               {socialIcons.map((social, index) => (
-                <li key={index} className="w-[25px] h-[25px] border flex justify-center items-center rounded-full">
+                <li key={index} className="w-[25px] h-[25px] hover:bg-primary-theme-clr hover:text-white border flex justify-center items-center rounded-full">
                   <a href={social.link} target="_blank" rel="noopener noreferrer" className="p-2">
                     {social.icon}
                   </a>

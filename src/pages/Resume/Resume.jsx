@@ -5,6 +5,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { CiMail,CiPhone ,CiGlobe,CiLocationOn,CiLinkedin } from "react-icons/ci";
 import { FaGithub, FaInstagram,FaFacebook } from "react-icons/fa";
 import LeftSidePane from '../../components/LeftSidePane/LeftSidePane';
+import DefaultSideLayout from '../../components/DefaultSideLayout/DefaultSideLayout.jsx';
 import Footer from '../../components/Footer/Footer';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 import Button from '../../components/Buttons/Button';
@@ -209,13 +210,7 @@ function Resume() {
   return (
     <>
       <LeftSidePane name='Chris Evans' designation='Senior Software Engineer' profilepic={profilepic}/>
-      <div className="px-2 pt-[5rem] pb-10 overflow-auto w-[80%] overflow-y-auto [&::-webkit-scrollbar]:w-2
-      [&::-webkit-scrollbar-track]:rounded-full
-      [&::-webkit-scrollbar-track]:bg-gray-100
-      [&::-webkit-scrollbar-thumb]:rounded-full
-      [&::-webkit-scrollbar-thumb]:bg-gray-300
-      dark:[&::-webkit-scrollbar-track]:bg-[#ccc]
-      dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+      <DefaultSideLayout>
         <div className="w-100 text-center">
           <SectionTitle secTitle={'Online Resume'} secSubTitle={''} exClassName='text-[2rem]'/>
           <Link to={'/resume.pdf'} target='_blank' download>
@@ -225,7 +220,7 @@ function Resume() {
         <hr className='my-10'/>
         <CV user={ResumeData}/>
         <Footer/>
-      </div>
+      </DefaultSideLayout>
     </>
   );
 }

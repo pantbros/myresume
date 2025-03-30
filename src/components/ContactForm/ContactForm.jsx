@@ -64,8 +64,8 @@ function ContactForm({ inputFields, validate }) {
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="p-10 border rounded-[25px]">
-                <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="p-5 md:p-10 border rounded-[25px]">
+                <div className="grid md:grid-cols-2 gap-4">
                     {inputFields.map(({ name, type, placeholder, icon }, index) => (
                         name !== "message" && (
                             <div key={index} className="flex items-center mb-4 relative">

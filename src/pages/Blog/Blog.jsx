@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LeftSidePane from '../../components/LeftSidePane/LeftSidePane';
+import DefaultSideLayout from '../../components/DefaultSideLayout/DefaultSideLayout';
 import Blog from "../../components/Blog/Blog";
 import Button from '../../components/Buttons/Button';
 import {PiPaperPlaneTilt} from "react-icons/pi";
@@ -51,13 +52,7 @@ function Blogs() {
   return (
     <>
       <LeftSidePane name='Chris Evans' designation='Senior Software Engineer' profilepic={profilepic}/>
-      <div className="px-2 pt-[5rem] pb-10 overflow-auto w-[80%] overflow-y-auto [&::-webkit-scrollbar]:w-2
-      [&::-webkit-scrollbar-track]:rounded-full
-      [&::-webkit-scrollbar-track]:bg-gray-100
-      [&::-webkit-scrollbar-thumb]:rounded-full
-      [&::-webkit-scrollbar-thumb]:bg-gray-300
-      dark:[&::-webkit-scrollbar-track]:bg-[#ccc]
-      dark:[&::-webkit-scrollbar-thumb]:bg-neutral-500">
+      <DefaultSideLayout>
         <div className='w-[100%] text-center mx-auto'>
             <SectionTitle secTitle={'Want to hire me for custom package?'} secSubTitle={'Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore.'} exClassName='text-[1.75rem]'/>
             <Link to='/contact'>
@@ -70,7 +65,7 @@ function Blogs() {
             </div>
             <Footer/>
         </div>
-      </div>  
+      </DefaultSideLayout>  
     </>
   );
 }

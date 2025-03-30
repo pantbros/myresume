@@ -2,6 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css'; // Import Swiper styles correctly
 import { FaStar } from 'react-icons/fa'; // Star icon from react-icons
+import reviewer1 from '../../assets/reviews/user1.png'
 
 const TestimonialSlider = () => {
   // Testimonial data
@@ -10,25 +11,25 @@ const TestimonialSlider = () => {
       quote: "I highly recommend Portfolify to anyone looking for a high-quality best Bootstrap theme.",
       name: "Esther Howard",
       country: "Australia",
-      image: "/assets/images/buyer1.png", // Update with correct image paths
+      image: reviewer1, // Update with correct image paths
     },
     {
       quote: "This is a fantastic theme, and I’ve used it in multiple projects. I’m really happy with the results!",
       name: "John Doe",
       country: "USA",
-      image: "/assets/images/buyer2.png",
+      image: reviewer1,
     },
     {
       quote: "Great design and easy to use. Perfect for modern websites and very responsive!",
       name: "Jane Smith",
       country: "Canada",
-      image: "/assets/images/buyer3.png",
+      image: reviewer1,
     },
     {
       quote: "The theme is sleek, and it works well across all screen sizes. Amazing performance!",
       name: "Jack Williams",
       country: "UK",
-      image: "/assets/images/buyer4.png",
+      image: reviewer1,
     },
   ];
 
@@ -67,7 +68,7 @@ const TestimonialSlider = () => {
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
-            <div className="slide-card px-6 py-8 bg-white shadow-lg rounded-lg">
+            <div className="slide-card px-6 py-8 bg-[#fafafa] shadow-lg rounded-lg border-2 border-[#efefef] h-[calc(100%)]">
               {/* Rating stars */}
               <div className="flex gap-1 mb-4">
                 {[...Array(5)].map((_, i) => (
@@ -88,7 +89,7 @@ const TestimonialSlider = () => {
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div>
-                  <span className="text-xl font-semibold text-gray-900">{testimonial.name}</span>
+                  <span className="text-xl font-semibold text-gray-900">{testimonial.name}</span><br />
                   <span className="text-sm text-gray-600">{testimonial.country}</span>
                 </div>
               </div>

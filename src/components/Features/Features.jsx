@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { IoIosArrowRoundUp } from "react-icons/io";
 function Features({ FeatureImg, techFeatures, featureTitle, featureLinkIcon,LinkDestination}) {
   return (
-    <div className="w-[50%] p-2 flex flex-col gap-3 flex-wrap">
+    <div className="md:w-[50%] p-2 flex flex-col gap-3 md:flex-wrap">
       <div>
         <img src={FeatureImg} alt=""/>
       </div>
       <div className="flex items-center justify-between">
-        <div className="flex flex-col gap-4">
-            <div className="flex gap-2">
+        <div className="flex flex-col gap-4 md:w-[unset] w-70%">
+            <div className="flex gap-2 flex-wrap w-[100%] md:w-[unset]">
                 {techFeatures.map((techFeature, index) => (
                 <span key={index} className="py-2 px-4 rounded-full border-[1px] border-[#ccc] text-sm font-medium">
                     {techFeature}

@@ -5,7 +5,7 @@ ContactCta.propTypes = {
 };
 function ContactCta({bgImage, children}){
     return(
-        <div className='bg-cover bg-center bg-fixed bg-attchment w-[100%] text-[#ffffff] px-10 py-20' style={{ backgroundImage: `url(${bgImage})` }}>
+        <div className='bg-cover bg-center bg-fixed bg-attchment w-[100%] text-[#ffffff] md:px-10 md:py-20 p-5' style={{ backgroundImage: `url(${bgImage})` }}>
             {children}
         </div>
     )

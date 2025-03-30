@@ -168,9 +168,9 @@ function About({title, subtitle, titleContent}){
                 <img
                   src={profilePic}
                   alt="Profile"
-                  className="block"
+                  className="block mx-auto"
                 />
-                <div className="absolute inset-0 bg-primary-theme-clr opacity-50 z-[-1] p-2 animate-tilt"></div>
+                <div className="absolute inset-0 md:bg-primary-theme-clr opacity-50 z-[-1] p-2 animate-tilt"></div>
                 </div>
             </div>
         </div>
@@ -179,13 +179,13 @@ function About({title, subtitle, titleContent}){
             <PortfolioExperience key={index} portInfoTitle={portData.portInfoTitle} portInfoNumber={portData.portInfoNumber}/>
           ))}
         </div>
-        <hr className="my-20"/>
-        <div className="flex flex-col md:flex-row items-end">
+        <hr className="my-10 md:my-20"/>
+        <div className="flex flex-col md:flex-row md:items-end">
           <div className="md:w-[80%]">
             <SectionTitle secTitle='What I do' secSubTitle="I have more than 10 years' experience building software for clients all over the world. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my  online resume and project portfolio." exClassName={'border-l-4 border-primary-theme-clr pl-4'}/>
           </div>
           <div className="md:w-[20%]">
-            <Link to='/service-and-pricing'><Button icon={<IoMdArrowForward />} label='Service & Pricing' color='bg-primary-theme-clr text-[#ffffff] hover:bg-black hover:text-[#ffffff] w-max ms-auto'/></Link>
+            <Link to='/service-and-pricing'><Button icon={<IoMdArrowForward />} label='Service & Pricing' color='bg-primary-theme-clr text-[#ffffff] hover:bg-black hover:text-[#ffffff] w-max md:ms-auto'/></Link>
           </div>
         </div>
         <div className="flex flex-col md:flex-row flex-wrap gap-3 my-5">
@@ -195,27 +195,27 @@ function About({title, subtitle, titleContent}){
         </div>
         <div className={`flex flex-col md:flex-row flex-wrap gap-3 my-5`}>
             <ContactCta bgImage={bgImage}>
-             <div className="flex flex-col md:flex-row items-center">
+             <div className="flex flex-col md:flex-row md:items-center">
                 <div className="md:w-[80%]">
-                  <SectionTitle secTitle='Let’s Work together on your next Project' secSubTitle="I am available for freelance projects. Hire me and get your project done."/>
+                  <SectionTitle secTitle="Let's Work together on your next Project" secSubTitle="I am available for freelance projects. Hire me and get your project done."/>
                 </div>
                 <div className="md:w-[50%]">
                   <Link to="/contact">
-                    <Button icon={<IoMdArrowForward />} label={"Let's Get In Touch"} color={'bg-primary-theme-clr text-[#ffffff] hover:bg-white hover:text-black w-max ms-auto'}/>
+                    <Button icon={<IoMdArrowForward />} label={"Let's Get In Touch"} color={'bg-primary-theme-clr text-[#ffffff] hover:bg-white hover:text-black w-max md:ms-auto'}/>
                   </Link>
                 </div>
              </div>
             </ContactCta>
         </div>
-        <div className="flex items-end">
-          <div className="w-[80%]">
+        <div className="flex flex-col md:flex-row md:items-end">
+          <div className="md:w-[80%]">
             <SectionTitle secTitle='Featured Projects' secSubTitle="My step-by-step guide ensures a smooth project journey, from the initial consultation to the final delivery. I take care of every detail, allowing you to focus on what you do best." exClassName={'border-l-4 border-primary-theme-clr pl-4'}/>
           </div>
-          <div className="w-[20%]">
-            <Link to='/portfolio'><Button icon={<IoMdArrowForward />} label='View Portfolio' color='bg-primary-theme-clr text-[#ffffff] hover:bg-black hover:text-[#ffffff] w-max ms-auto'/></Link>
+          <div className="md:w-[20%]">
+            <Link to='/portfolio'><Button icon={<IoMdArrowForward />} label='View Portfolio' color='bg-primary-theme-clr text-[#ffffff] hover:bg-black hover:text-[#ffffff] w-max md:ms-auto'/></Link>
           </div>
         </div>
-        <div className="flex flex-wrap gap-y-5 py-10">
+        <div className="flex flex-col md:flex-row flex-wrap gap-y-5 py-10">
           {featureData.map((fData, index) => (
                 <Features 
                   key={index} 
@@ -226,17 +226,17 @@ function About({title, subtitle, titleContent}){
                 />
             ))}
         </div>
-        <div className="flex items-end">
-          <div className="w-[80%]">
+        <div className="flex flex-col md:flex-row md:items-end">
+          <div className="md:w-[80%]">
             <SectionTitle secTitle='Latest Blog Posts' secSubTitle="More than 1500+ agencies using Portfolify" exClassName={'border-l-4 border-primary-theme-clr pl-4'}/>
           </div>
-          <div className="w-[20%]">
+          <div className="md:w-[20%]">
             <Link to='/blog'>
-              <Button icon={''} label='See All Articles' color='bg-primary-theme-clr text-[#ffffff] hover:bg-black hover:text-[#ffffff] w-max ms-auto'/>
+              <Button icon={''} label='See All Articles' color='bg-primary-theme-clr text-[#ffffff] hover:bg-black hover:text-[#ffffff] w-max md:ms-auto'/>
             </Link>
           </div>
         </div>
-        <div className="flex flex-wrap gap-y-5 pt-10 ">
+        <div className="flex flex-col md:flex-row flex-wrap gap-y-5 pt-10 ">
           {blogData.map((bData, index) => (
             <Blog key={index} blogImg={bData.blogImg} blogDate={bData.blogDate} blogType={bData.blogType} BlogTitle={bData.BlogTitle}/>
           ))}

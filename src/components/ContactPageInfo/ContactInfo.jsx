@@ -28,12 +28,12 @@ function ContactInfo({ ContactInfos }) {
     };
 
     return (
-        <div className="flex justify-between">
+        <div className="flex md:flex-row flex-wrap md:justify-between">
             {ContactInfos.map((info, index) => (
-                <div className="flex items-center  gap-2 ps-10 border-l-[3px] border-l-primary-theme-clr" key={index}>
-                    <span className='text-4xl'>{info.icon}</span>
-                    <div className='flex flex-col gap-2'>
-                        <p className='text-3xl font-bold'>{info.text}</p>
+                <div className="flex md:items-center  gap-2 md:ps-10 md:border-l-[3px] border-l-primary-theme-clr" key={index}>
+                    <span className='md:text-4xl'>{info.icon}</span>
+                    <div className='flex flex-col md:gap-2'>
+                        <p className='md:text-3xl font-bold'>{info.text}</p>
                         {/* Render the appropriate link based on the type of info.detail */}
                         {isEmail(info.detail) ? (
                             <a href={`mailto:${info.detail}`} className="text-blue-500 text-sm">

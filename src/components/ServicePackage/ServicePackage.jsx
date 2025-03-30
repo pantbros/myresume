@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-function ServicePackage({packageName, packagePrice, ServiceLiS=[], listIcon, ButtonLabel, ButtonLabelIcon,classNames, LinkDes}) {
+function ServicePackage({packageName, packagePrice, ServiceLiS=[], listIcon, ButtonLabel, ButtonLabelIcon,classNames, LinkDes, offerLabelBtn}) {
     return (
         <div className={classNames}>
-                <div className={`bg-[#fafafa] p-10 border-[1px] border-[#cfcfcf] hover:border-primary-theme-clr`}>
+                {offerLabelBtn && <button className='bg-primary-theme-clr text-[#ffffff] py-3 top-[7%] right-[-5%] pr-5 border-[1px] absolute rotate-90 pl-10 rounded-full font-bold'>{offerLabelBtn}</button>}
+                <div className={`bg-[#fafafa] p-7 md:p-10 border-[1px] border-[#cfcfcf] hover:border-primary-theme-clr`}>
                     <div className="text-center w-full max-w-md mx-auto mb-6">
                     <h2 className="text-md font-normal">{packageName}</h2>
                     <p className="text-4xl font-bold text-primary-theme-clr">{packagePrice}</p>
