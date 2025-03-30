@@ -1,8 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React,{useEffect} from "react";
+import { Link, useNavigate } from "react-router-dom";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import Button from "../../components/Buttons/Button";
 function NotFound404(){
+    const navigate = useNavigate();
+    useEffect(() => {
+        const timer = setTimeout(() => navigate('/'), 3000);
+        return () => clearTimeout(timer);
+      }, [navigate]);
     return (
         <div className="px-2 pt-[5rem] pb-10 overflow-auto w-[100%] overflow-y-auto [&::-webkit-scrollbar]:w-2
             [&::-webkit-scrollbar-track]:rounded-full
